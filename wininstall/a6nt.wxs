@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
-    <DirectoryRef Id="D_bin">
+    <DirectoryRef Id="D_bin64">
       <Directory Id="D_bin_a6nt" Name="a6nt">
         <Component Id="cmp9E121291956F53F264990A9F6E93E67D" Guid="*">
           <File Id="fil174DC3B31231BE75291782CBF71B1ECB" KeyPath="yes" Source="..\a6nt\bin\a6nt\csv941.dll" />
@@ -28,7 +28,7 @@
         </Component>
       </Directory>
     </DirectoryRef>
-    <DirectoryRef Id="D_boot">
+    <DirectoryRef Id="D_boot64">
       <Directory Id="D_boot_a6nt" Name="a6nt">
         <Component Id="cmpB8AFC5E7298C4FB423F21E474D718248" Guid="*">
           <File Id="filAA3DCFC2962A0A679D26BAEF2EE45D18" KeyPath="yes" Source="..\a6nt\boot\a6nt\csv941md.lib" />

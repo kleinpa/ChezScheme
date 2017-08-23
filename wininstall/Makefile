@@ -1,11 +1,19 @@
 VERSION := 9.4.1
 WIXEXTENSIONS := -ext WixUIExtension
 
-Chez\ Scheme.msi: product.wixobj a6nt.wixobj examples.wixobj i3nt.wixobj ta6nt.wixobj ti3nt.wixobj
-	cmd.exe /c light.bat -nologo $(WIXEXTENSIONS) product.wixobj a6nt.wixobj examples.wixobj i3nt.wixobj ta6nt.wixobj ti3nt.wixobj -sice:ICE64 -out "$@"
+all: ChezScheme32.msi ChezScheme64.msi
 
-%.wixobj: %.wxs
-	cmd.exe /c candle.bat -nologo -dVersion=$(VERSION) $(WIXEXTENSIONS) $<
+ChezScheme32.msi: product.32.wixobj examples.32.wixobj i3nt.32.wixobj ti3nt.32.wixobj
+	cmd.exe /c light.bat -nologo $(WIXEXTENSIONS) product.32.wixobj examples.32.wixobj i3nt.32.wixobj ti3nt.32.wixobj -sice:ICE64 -out "$@"
+
+ChezScheme64.msi: product.64.wixobj a6nt.64.wixobj examples.64.wixobj ta6nt.64.wixobj
+	cmd.exe /c light.bat -nologo $(WIXEXTENSIONS) product.64.wixobj a6nt.64.wixobj examples.64.wixobj ta6nt.64.wixobj -sice:ICE64 -out "$@"
+
+%.32.wixobj: %.wxs
+	cmd.exe /c candle.bat -nologo -dVersion=$(VERSION) $(WIXEXTENSIONS) $< -out $@
+
+%.64.wixobj: %.wxs
+	cmd.exe /c candle.bat -arch x64 -nologo -dVersion=$(VERSION) $(WIXEXTENSIONS) $< -out $@
 
 .PHONY: workareas
 workareas:
